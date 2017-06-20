@@ -1,0 +1,38 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(tidyverse)
+
+head(diamonds)
+```
+
+```{r}
+filter(diamonds, color == "H") %>%
+group_by(clarity) %>%
+summarise(count=n(), mean=mean(price))
+```
+```{r}
+filter(diamonds, carat > 3) %>%
+group_by(cut) %>%
+summarise(mean = mean(price), median = median(price), sum = sum(price), total = n()) %>%
+arrange(total) %>%
+select(-total)
+  
+```
+
+```{r}
+filter(diamonds, carat > 3.5) %>%
+select(carat, color, price) %>%
+arrange(price) %>%
+mutate(cumsum=cumsum(price)) %>%
+mutate(diff=price-mean(price)/mean(price))
+
+```
+

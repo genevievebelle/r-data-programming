@@ -161,8 +161,8 @@ A stacked bar chart showing the distribution of counts in diamond clarity splitt
 ggplot(diamonds, aes(clarity, fill=cut)) + 
 	geom_bar()
 
-#ggplot(diamonds, aes(clarity) + 
-#	geom_bar(aes(fill = cut))
+ggplot(diamonds, aes(clarity)) + 
+	geom_bar(aes(fill = cut))
 
 ```
 
@@ -291,7 +291,9 @@ Description of the plot:
 
 ```{r you_01}
 #start here
-
+ggplot(diamonds, aes(x = clarity, fill = cut, group = cut)) +
+  geom_bar() +
+  facet_wrap(~cut, nrow = 5)
 
 
 ```
@@ -311,6 +313,8 @@ Description of the plot:
 ```{r you_02}
 #your second trial
 
+ggplot(diamonds, aes(x = clarity, fill = cut)) +
+  geom_bar(position = "dodge")
 ```
 
 
@@ -325,7 +329,8 @@ Description of the plot:
 
 ```{r you_03}
 #the final one
-
+ggplot(diamonds, aes(x=price, fill=cut)) +
+  geom_bar(binwidth = 500, position="fill")
 
 ```
 
@@ -353,8 +358,6 @@ There are plenty of neat tutorials and nice examples. Our favorites ones are:
 * [Cookbook for R](http://www.cookbook-r.com)
 * [ggplot2 cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 * [stackoverflow](http://stackoverflow.com)
-
-
 
 
 
